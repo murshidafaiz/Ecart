@@ -1,0 +1,51 @@
+<app-header></app-header>
+
+<div style="margin-top: 100px;">
+<!-- wishlist without items  -->
+<div class="d-flex justify-content-center align-items-center w-100" style="height: 100vh;">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <img class="img-fluid" src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-5521508-4610092.png" alt="">
+        <div class="text-center">
+            <h1 class="text-danger">Your Wishlist is Empty!!!</h1>
+            <a class="btn btn-success" routerLink="">Add More Items</a>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- wishlist with items -->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div *ngFor="let product of wishlist" class="col mb-5">
+                    <div class="card h-100 p-3">
+                        <!-- Product image-->
+                        <img width="200px" height="200px" style="cursor: pointer;" class="card-img-top" [src]="product.image" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{product.title}}</h5>
+                                <!-- Product price-->
+                                ${{product.price}}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="d-flex justify-content-between">
+                                <button (click)="removeWishlistItem(product._id)" class="btn  mt-auto" ><i class="fa-solid fa-heart-circle-minus text-danger fa-2x"></i></button>
+                                <button class="btn  mt-auto"><i class="fa-solid fa-cart-plus text-success fa-2x"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+</div>
+
+<app-footer></app-footer>

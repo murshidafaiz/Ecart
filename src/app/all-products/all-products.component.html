@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<div style="margin-top: 100px;">
+<!-- header -->
+<div id="carouselExample" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-inner">
+      <div class="carousel-item active" >
+        <img height="300px" src="https://shoptimized.net/wp-content/uploads/2021/10/ecommerce-banner-image-sample.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img  height="300px" src="https://as1.ftcdn.net/v2/jpg/03/14/28/96/1000_F_314289607_ADADbnGr64dpGnddyhZPidCoc6jgKiHK.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img height="300px"  src="https://th.bing.com/th/id/R.b2a3df76e4164eed18533e0722008d7b?rik=%2f4Lx%2bUKaPWpxjw&riu=http%3a%2f%2fstatic1.squarespace.com%2fstatic%2f60fc73d0677174709e26a901%2ft%2f618003c4e91f2f2e7df27157%2f1635779524412%2f76.png%3fformat%3d1500w&ehk=iz6IX6hMsrsba5SWyAibbt9Em5MxJP7z964U6nNQ2HM%3d&risl=&pid=ImgRaw&r=0" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div *ngFor="let product of allProducts | search:searchString:'title'" class="col mb-5">
+                    <div  class="card h-100 shadow p-2">
+                        <!-- Product image-->
+                        <img height="200px" routerLink="product/view/{{product.id}}" style="cursor: pointer;" class="card-img-top" [src]="product.image" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{product.title.slice(0,17)}}...</h5>
+                                <!-- Product price-->
+                                ${{product.price}}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="d-flex justify-content-between">
+                                <button (click)="addtoWishlist(product)" class="btn  mt-auto" ><i class="fa-solid fa-heart text-danger fa-2x"></i></button>
+                                <button (click)="addToCart(product)" class="btn  mt-auto"><i class="fa-solid fa-cart-plus text-success fa-2x"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+</div>
+
+<app-footer></app-footer>
